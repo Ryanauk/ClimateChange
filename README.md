@@ -27,12 +27,12 @@ climate_change_analyzer/
 # Work Load Share:
 ```bash
 Reid:
-1. 
+1. data_processor.py
 2.
 3.
 
 Ryan:
-1.
+1. Data input information(Weather API)
 2.
 3.
 
