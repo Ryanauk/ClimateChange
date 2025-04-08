@@ -1,0 +1,15 @@
+```
+1. Develop a data processing module to load, clean, and normalize climate datasets.
+2. Implement machine learning algorithms for climate parameter (e.g. temperature) prediction,
+data clustering, and anomaly detection.
+3. Create a visualization module with at least three different types of plots to represent climate
+data.
+4. Design and implement a command-line interface or GUI for user interaction.
+5. Write comprehensive unit tests to ensure code reliability.
+6. Use Git for version control throughout the development process.
+7. Provide clear documentation, including a README file and inline comments.
+8. Apply your tool to a real climate dataset and prepare a brief report on your algorithms,
+techniques and findings.
+9. Design a presentation to demonstrate your work in class that includes running your
+application and explaining your design and algorithms.
+```
