@@ -25,8 +25,9 @@ climate_change_analyzer/
 ```
 
 # Work Load Share:
+```bash
 Reid:
-1.
+1. 
 2.
 3.
 
@@ -39,4 +40,7 @@ Michael:
 1.
 2.
 3.
+
+Together:
+- Main.py
 
