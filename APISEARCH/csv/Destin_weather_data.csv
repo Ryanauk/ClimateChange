@@ -1,0 +1,9 @@
+City,Date,Temperature (C),Condition,Air Quality Index,Alerts,Sunrise,Sunset
+Destin,2025-01-01,12.8,Sunny,N/A,No Alerts,06:43 AM,04:57 PM
+Destin,2025-01-02,11.8,Sunny,N/A,No Alerts,06:43 AM,04:58 PM
+Destin,2025-01-03,12.9,Overcast,N/A,No Alerts,06:43 AM,04:58 PM
+Destin,2025-01-04,11.8,Partly cloudy,N/A,No Alerts,06:43 AM,04:59 PM
+Destin,2025-01-05,17.7,Moderate or heavy rain shower,N/A,No Alerts,06:43 AM,05:00 PM
+Destin,2025-01-06,13.3,Moderate or heavy rain shower,N/A,No Alerts,06:44 AM,05:01 PM
+Destin,2025-01-07,4.6,Sunny,N/A,No Alerts,06:44 AM,05:01 PM
+Destin,2025-01-08,5.1,Sunny,N/A,No Alerts,06:44 AM,05:02 PM

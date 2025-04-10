@@ -14,7 +14,7 @@ def sanitize_filename(filename):
     return re.sub(r'[^\w\s-]', '', filename.replace(' ', '_'))
 
 def get_weather_by_city_and_save(city_name):
-    api_key = "3b418db04a584bb891f00819251004"  # API key is hard coded here
+    api_key = "0fa4dde2d3b54e9baa8233753250704"  # API key is hard coded here
     sanitized_city = sanitize_filename(city_name)
     csv_file_path = f"{sanitized_city}_weather_data.csv"
     
@@ -218,69 +218,6 @@ def get_weather_by_city_and_date_range(city_name, start_date, end_date):
     except ValueError as error:
         print(f"Invalid date format: {error}")
 
-def predict_temperature(city_name, start_date, end_date):
-    """Predict the temperature for the week after the queried range using the last 10 years of historical data."""
-    api_key = "0fa4dde2d3b54e9baa8233753250704"  # API key is hard coded here
-    sanitized_city = sanitize_filename(city_name)
-    
-    # Ensure the 'csv' folder exists
-    csv_folder = "csv"
-    os.makedirs(csv_folder, exist_ok=True)
-    
-    # Save the CSV file in the 'csv' folder
-    csv_file_path = os.path.join(csv_folder, f"{sanitized_city}_predicted_weather.csv")
-    
-    base_url = "https://api.weatherapi.com/v1/history.json"
-    
-    try:
-        # Parse the start and end dates
-        start_date_obj = datetime.strptime(start_date, '%Y-%m-%d')
-        end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
-        prediction_start_date = end_date_obj + timedelta(days=1)
-        prediction_end_date = prediction_start_date + timedelta(days=6)
-        
-        # Collect data for the last 10 years
-        historical_data = {day: [] for day in range(7)}  # Store temperatures for each day of the prediction week
-        
-        for year_offset in range(1, 11):  # Last 10 years
-            for day_offset in range(7):  # 7 days of prediction
-                query_date = (prediction_start_date - timedelta(days=365 * year_offset) + timedelta(days=day_offset)).strftime('%Y-%m-%d')
-                
-                parameters = {
-                    "key": api_key,
-                    "q": city_name,
-                    "dt": query_date,
-                    "aqi": "no"
-                }
-                
-                try:
-                    response = requests.get(base_url, params=parameters)
-                    response.raise_for_status()
-                    data = response.json()
-                    day = data['forecast']['forecastday'][0]['day']
-                    historical_data[day_offset].append(day['avgtemp_c'])
-                except requests.RequestException as error:
-                    print(f"Error fetching data for {query_date}: {error}")
-                    continue
-        
-        # Calculate the average temperature for each day of the prediction week
-        predicted_temperatures = [sum(temps) / len(temps) if temps else None for temps in historical_data.values()]
-        
-        # Save the predicted data to a CSV file
-        with open(csv_file_path, mode='w', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow(["Date", "Predicted Temperature (C)"])
-            
-            for day_offset, temp in enumerate(predicted_temperatures):
-                prediction_date = (prediction_start_date + timedelta(days=day_offset)).strftime('%Y-%m-%d')
-                writer.writerow([prediction_date, temp])
-        
-        print(f"Predicted temperatures for {city_name} saved to {csv_file_path}.")
-        return predicted_temperatures, prediction_start_date, prediction_end_date
-    except requests.RequestException as error:
-        print(f"Error occurred: {error}")
-        return None, None, None
-
 def plot_weather_data(city_name):
     """Plot the weather data from the CSV file."""
     sanitized_city = sanitize_filename(city_name)
@@ -306,46 +243,9 @@ def plot_weather_data(city_name):
     plt.tight_layout()
     plt.show()
 
-def plot_weather_with_prediction(city_name, start_date, end_date, predicted_temperatures, prediction_start_date):
-    """Plot the weather data along with the predicted temperatures."""
-    sanitized_city = sanitize_filename(city_name)
-    csv_folder = "csv"
-    csv_file_path = os.path.join(csv_folder, f"{sanitized_city}_weather_data.csv")
-    
-    if not os.path.exists(csv_file_path):
-        print(f"No data found for {city_name}. Please fetch the data first.")
-        return
-    
-    # Read the CSV file
-    data = pd.read_csv(csv_file_path)
-    
-    # Plot the actual temperature data
-    plt.figure(figsize=(12, 6))
-    plt.plot(data["Date"], data["Temperature (C)"], marker='o', label="Actual Temperature (C)", color="blue")
-    
-    # Plot the predicted temperatures
-    prediction_dates = [(prediction_start_date + timedelta(days=i)).strftime('%Y-%m-%d') for i in range(7)]
-    plt.plot(prediction_dates, predicted_temperatures, marker='o', label="Predicted Temperature (C)", color="orange")
-    
-    # Add labels, title, and legend
-    plt.title(f"Weather Data and Predictions for {city_name}")
-    plt.xlabel("Date")
-    plt.ylabel("Temperature (C)")
-    plt.xticks(rotation=45)
-    plt.grid(True)
-    plt.legend()
-    plt.tight_layout()
-    plt.show()
-
 # Example usage
 city = input("Enter the city name: ")
 start_date = input("Enter the start date (YYYY-MM-DD): ")
 end_date = input("Enter the end date (YYYY-MM-DD): ")
-
-# Fetch and plot actual data
 get_weather_by_city_and_date_range(city, start_date, end_date)
-
-# Predict and plot future data
-predicted_temperatures, prediction_start_date, prediction_end_date = predict_temperature(city, start_date, end_date)
-if predicted_temperatures:
-    plot_weather_with_prediction(city, start_date, end_date, predicted_temperatures, prediction_start_date)
+plot_weather_data(city)
