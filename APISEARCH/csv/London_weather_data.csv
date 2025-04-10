@@ -1,9 +1,0 @@
-City,Date,Temperature (C),Condition,Air Quality Index,Alerts
-London,2025-04-01,8.9,Sunny,N/A,No Alerts
-London,2025-04-02,10.6,Partly cloudy,N/A,No Alerts
-London,2025-04-03,12.5,Cloudy,N/A,No Alerts
-London,2025-04-04,13.9,Overcast,N/A,No Alerts
-London,2025-04-05,11.0,Sunny,N/A,No Alerts
-London,2025-04-06,9.4,Sunny,N/A,No Alerts
-London,2025-04-07,9.6,Sunny,N/A,No Alerts
-London,2025-04-08,9.7,Overcast,N/A,No Alerts
