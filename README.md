@@ -28,17 +28,17 @@ climate_change_analyzer/
 ```bash
 Reid:
 1. data_processor.py
-2.
+2. Flask Integration
 3.
 
 Ryan:
 1. Data input information(Weather API)
-2.
+2. Graph Funcionallity
 3.
 
 Michael:
-1.
-2.
+1. Unit Testing
+2. Report
 3.
 
 Together:
