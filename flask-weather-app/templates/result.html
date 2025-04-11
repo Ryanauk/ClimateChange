@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+  <title>Weather Results for {{ city }}</title>
+</head>
+<body>
+  <h1>Weather Analysis for {{ city }}</h1>
+  <p>Data from {{ start_date }} to {{ end_date }}</p>
+  {% if plot_image %}
+    <img src="data:image/png;base64,{{ plot_image }}" alt="Weather Plot">
+  {% else %}
+    <p>No plot available.</p>
+  {% endif %}
+  <br><br>
+  <a href="{{ url_for('index') }}">Go Back</a>
+</body>
+</html>
