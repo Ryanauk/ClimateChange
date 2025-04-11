@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+  <title>Comparison Result</title>
+</head>
+<body>
+  <h1>Comparison of City Weather Data</h1>
+  <p>Data from {{ start_date }} to {{ end_date }} for cities: {{ cities|join(", ") }}</p>
+  {% if heatmap_image %}
+    <img src="data:image/png;base64,{{ heatmap_image }}" alt="Heatmap">
+  {% else %}
+    <p>No heatmap available.</p>
+  {% endif %}
+  <p>{{ similar_text }}</p>
+  <br>
+  <a href="{{ url_for('compare') }}">Go Back to Compare</a>
+</body>
+</html>
