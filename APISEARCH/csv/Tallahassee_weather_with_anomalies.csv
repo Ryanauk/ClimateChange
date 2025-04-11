@@ -1,0 +1,4 @@
+City,Date,Temperature (C),Condition,Air Quality Index,Alerts,Sunrise,Sunset,Anomaly
+Tallahassee,2025-01-01,12.6,Sunny,N/A,No Alerts,07:34 AM,05:48 PM,Yes
+Tallahassee,2025-01-02,9.7,Sunny,N/A,No Alerts,07:35 AM,05:49 PM,No
+Tallahassee,2025-01-03,10.1,Sunny,N/A,No Alerts,07:35 AM,05:49 PM,No

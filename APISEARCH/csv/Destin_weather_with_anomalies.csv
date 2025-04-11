@@ -1,0 +1,4 @@
+City,Date,Temperature (C),Condition,Air Quality Index,Alerts,Sunrise,Sunset,Anomaly
+Destin,2025-01-01,12.8,Sunny,N/A,No Alerts,06:43 AM,04:57 PM,No
+Destin,2025-01-02,11.8,Sunny,N/A,No Alerts,06:43 AM,04:58 PM,No
+Destin,2025-01-03,12.9,Overcast,N/A,No Alerts,06:43 AM,04:58 PM,No

@@ -1,0 +1,4 @@
+City,Date,Temperature (C),Condition,Air Quality Index,Alerts,Sunrise,Sunset,Anomaly
+Memphis,2025-01-01,3.9,Overcast,N/A,No Alerts,07:09 AM,04:59 PM,No
+Memphis,2025-01-02,3.4,Overcast,N/A,No Alerts,07:09 AM,05:00 PM,No
+Memphis,2025-01-03,5.8,Partly cloudy,N/A,No Alerts,07:09 AM,05:01 PM,No
